@@ -100,7 +100,11 @@ describe("'CDXXIX' as input", () => {
 
 describe("'CD1X' as input", () => {
   test("the output should be value required", () => {
-    expect(RomanNumber("CD1X")).toEqual("value required");
+    const output = "value required";
+
+    expect(() => {
+      RomanNumber('CD1X');
+    }).toThrow(output);
   });
 });
 
