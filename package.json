@@ -1,0 +1,22 @@
+{
+  "name": "romannumerals",
+  "version": "1.0.0",
+  "description": "Start time: 16/11/2020 15:31",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amaralDaniel/RomanNumerals.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amaralDaniel/RomanNumerals/issues"
+  },
+  "homepage": "https://github.com/amaralDaniel/RomanNumerals#readme",
+  "devDependencies": {
+    "jest": "^26.6.3"
+  }
+}
