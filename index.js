@@ -34,22 +34,46 @@ RomanNumber = (num) => {
       const receivedRomanNumeral = num.split('');
       let currentCharacter = '';
       var output = 0;
-      var indexToAdd; 
-
-
+      var lastCharacter = receivedRomanNumeral[0];
+      var characterCount = 1;
+    
       while (currentIndex < maxLength) {
+        if (output > 3999) {
+          throw new Error("value required");
+        }
         currentCharacter = receivedRomanNumeral[currentIndex];
         
+        if (currentIndex > 0) {
+          if (currentCharacter == lastCharacter) {
+            characterCount++;
+
+            if (characterCount > 3) {
+              throw new Error("value required");
+            }
+          } else {
+            lastCharacter = currentCharacter;
+            characterCount = 1;
+          }
+        }
         if (currentIndex + 1 < maxLength) {
-          if (romanNumbers.indexOf(currentCharacter) <= romanNumbers.indexOf(receivedRomanNumeral[currentIndex+1])) {
-            output += arabicNumbers[romanNumbers.indexOf(currentCharacter)];
+          let currentRomanNumberIndex = romanNumbers.indexOf(currentCharacter);
+          let nextCharacter = receivedRomanNumeral[currentIndex+1];
+          let nextRomanNumberIndex = romanNumbers.indexOf(nextCharacter);
+          let currentArabicNumber = arabicNumbers[currentRomanNumberIndex];
+          let nextArabicNumber = arabicNumbers[nextRomanNumberIndex];
+
+          if (currentRomanNumberIndex <= nextRomanNumberIndex) {
+            output += currentArabicNumber;
             currentIndex++;
           } else {
-            output += (arabicNumbers[romanNumbers.indexOf(receivedRomanNumeral[currentIndex+1])] - arabicNumbers[romanNumbers.indexOf(currentCharacter)]);
+            output += (nextArabicNumber - currentArabicNumber);
             currentIndex+=2;
           }
         } else {
-          output += arabicNumbers[romanNumbers.indexOf(currentCharacter)];
+          let currentRomanNumberIndex = romanNumbers.indexOf(currentCharacter);
+          let currentArabicNumber = arabicNumbers[currentRomanNumberIndex];
+          
+          output += currentArabicNumber;
           currentIndex++;
         }
       }
@@ -77,7 +101,7 @@ RomanNumber = (num) => {
   }
 };
 
-console.log(RomanNumber('II'));
+//console.log(RomanNumber('IIII'));
 
 module.exports = {
   RomanNumber: RomanNumber,
