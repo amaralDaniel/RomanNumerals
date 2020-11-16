@@ -44,23 +44,33 @@ describe("10000 as input", () => {
   });
 });
 
-describe("1 to 5 as input", () => {
+describe("1 to 10 as input", () => {
   test("the output should be I-V as roman numeral", () => {
     expect(RomanNumber(1)).toEqual("I");
     expect(RomanNumber(2)).toEqual("II");
     expect(RomanNumber(3)).toEqual("III");
     expect(RomanNumber(4)).toEqual("IV");
     expect(RomanNumber(5)).toEqual("V");
+    expect(RomanNumber(6)).toEqual("VI");
+    expect(RomanNumber(7)).toEqual("VII");
+    expect(RomanNumber(8)).toEqual("VIII");
+    expect(RomanNumber(9)).toEqual("IX");
+    expect(RomanNumber(10)).toEqual("X");
   });
 });
 
-describe("I to V as input", () => {
+describe("I to X as input", () => {
   test("the output should be 1-5 as arabic number", () => {
     expect(RomanNumber("I")).toEqual(1);
     expect(RomanNumber("II")).toEqual(2);
     expect(RomanNumber("III")).toEqual(3);
     expect(RomanNumber("IV")).toEqual(4);
     expect(RomanNumber("V")).toEqual(5);
+    expect(RomanNumber("VI")).toEqual(6);
+    expect(RomanNumber("VII")).toEqual(7);
+    expect(RomanNumber("VIII")).toEqual(8);
+    expect(RomanNumber("IX")).toEqual(9);
+    expect(RomanNumber("X")).toEqual(10);
   });
 });
 
@@ -132,12 +142,43 @@ describe("'MCMLXXX' as input", () => {
 
 describe("'MMMMCMXCIC' as input", () => {
   test("the output should be value required", () => {
-    expect(RomanNumber("MMMMCMXCIC")).toEqual("value required");
+    const output = "value required";
+
+    expect(() => {
+      RomanNumber("MMMMCMXCIC");
+    }).toThrow(output);
   });
 });
 
 describe("'MMMMDMXCIX' as input", () => {
   test("the output should be value required", () => {
-    expect(RomanNumber("MMMMDMXCIX")).toEqual("value required");
+    const output = "value required";
+
+    expect(() => {
+      RomanNumber("MMMMDMXCIX");
+    }).toThrow(output);
   });
 });
+
+describe("No more than 3 straight equal characters", () => {
+  test("the output should be value required", () => {
+    const output = "value required";
+
+    expect(() => {
+      RomanNumber("IIII");
+    }).toThrow(output);
+  });
+});
+
+describe("No more than 3 straight equal characters", () => {
+  test("the output should be value required", () => {
+    const output = "value required";
+
+    expect(() => {
+      RomanNumber("MCMVIIII");
+    }).toThrow(output);
+  });
+});
+
+
+
