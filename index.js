@@ -1,129 +1,65 @@
-const { expect } = require("@jest/globals");
-const { describe } = require("yargs");
+const romanNumbers = [
+  "M",
+  "CM",
+  "D",
+  "CD",
+  "C",
+  "XC",
+  "L",
+  "XL",
+  "X",
+  "IX",
+  "V",
+  "IV",
+  "I",
+];
+const arabicNumbers = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
+const hasNumber = /\d/;
 
-var testChars = [0, 1, 3, 4, 5, 'I', 'III', 'IIII', 'IV', 'V', 1968, '1473', 2999, 3000, 10000, 'CDXXIX', 'CD1X', 'error', 'MCDLXXXII', 'MCMLXXX', 'MMMMCMXCIC', 'MMMMDMXCIX'];
+RomanNumber = (num) => {
+  if (num === null || num === "" || num === "error") {
+    throw new Error("value required");
+  }
+  if (num < 1 || num > 3999) {
+    throw new Error("invalid range");
+  }
 
-describe("Null input", () => {
-    test("the output should be a value required exception error", () => {
-        const input = null;
-        const output = 'value required';
+  //roman to arabic
+  if (typeof num == "string") {
+    if (hasNumber.test(num)) {
+      throw new Error("value required");
+    } else {
+      let currentIndex = 0;
+      let maxLength = num.length;
+      let current
+      while (currentIndex < maxLength) {
 
-        expect(RomanNumber(input)).toEqual(output);
-    });
-});
+      }
+    }
+  } else {
+    //arabic to roman
+    let numberToConvert = num;
+    let currentIndex = 0;
+    var output = [];
+    var quotient = 0;
+    var rest = 0;
+    while (numberToConvert > 0) {
+      quotient = Math.floor(numberToConvert / arabicNumbers[currentIndex]);
+      rest = numberToConvert % arabicNumbers[currentIndex];
+      if (quotient > 0) {
+        output.push(romanNumbers[currentIndex].repeat(quotient));
+        numberToConvert = rest;
+        currentIndex++;
+      } else {
+        currentIndex++;
+      }
+    }
+    return output.join("");
+  }
+};
 
-describe("Empty input", () => {
-    test("the output should be a value required exception error", () => {
-        const input = '';
-        const output = 'value required';
-        
-        expect(RomanNumber(input)).toEqual(output);
-    });
-});
+//console.log(RomanNumber('1473'));
 
-describe("0 as input", () => {
-    test("the output should be a invalid range exception error", () => {
-        const input = 0;
-        const output = 'invalid range';
-        
-        expect(RomanNumber(input)).toEqual(output);
-    });
-});
-
-describe("10000 as input", () => {
-    test("the output should be a invalid range exception error", () => {
-        const input = 10000;
-        const output = 'invalid range';
-        
-        expect(RomanNumber(input)).toEqual(output);
-    });
-});
-
-describe("1 to 5 as input", () => {
-    test("the output should be I-V as roman numeral", () => {
-        expect(RomanNumber(1)).toEqual('I');
-        expect(RomanNumber(2)).toEqual('II');
-        expect(RomanNumber(3)).toEqual('III');
-        expect(RomanNumber(4)).toEqual('IV');
-        expect(RomanNumber(5)).toEqual('V');
-    });
-});
-
-describe("I to V as input", () => {
-    test("the output should be 1-5 as arabic number", () => {
-        expect(RomanNumber('I')).toEqual(1);
-        expect(RomanNumber('II')).toEqual(2);
-        expect(RomanNumber('III')).toEqual(3);
-        expect(RomanNumber('IV')).toEqual(4);
-        expect(RomanNumber('V')).toEqual(5);
-    });
-});
-
-describe("1968 as input", () => {
-    test("the output should be MCMLXVIII", () => {
-        expect(RomanNumber(1968)).toEqual('MCMLXVIII');
-    });
-});
-
-describe("'1473' as input", () => {
-    test("the output should be value required exception", () => {
-        expect(RomanNumber('1473')).toEqual('invalid range');
-    });
-});
-
-describe("2999 as input", () => {
-    test("the output should be MMCMXCIX", () => {
-        expect(RomanNumber(2999)).toEqual('MMCMXCIX');
-    });
-});
-
-describe("3000 as input", () => {
-    test("the output should be MMM", () => {
-        expect(RomanNumber(3000)).toEqual('MMM');
-    });
-});
-
-describe("'CDXXIX' as input", () => {
-    test("the output should be 429", () => {
-        expect(RomanNumber('CDXXIX')).toEqual(429);
-    });
-});
-
-describe("'CD1X' as input", () => {
-    test("the output should be value required", () => {
-        expect(RomanNumber('CD1X')).toEqual('value required');
-    });
-});
-
-describe("'error' as input", () => {
-    test("the output should be value required", () => {
-        expect(RomanNumber('error')).toEqual('value required');
-    });
-});
-
-describe("'MCDLXXXII' as input", () => {
-    test("the output should be 1482", () => {
-        expect(RomanNumber('MCDLXXXII')).toEqual(1482);
-    });
-});
-
-describe("'MCMLXXX' as input", () => {
-    test("the output should be 1980", () => {
-        expect(RomanNumber('MCMLXXX')).toEqual(1980);
-    });
-});
-
-describe("'MMMMCMXCIC' as input", () => {
-    test("the output should be value required", () => {
-        expect(RomanNumber('MMMMCMXCIC')).toEqual('value required');
-    });
-});
-
-describe("'MMMMDMXCIX' as input", () => {
-    test("the output should be value required", () => {
-        expect(RomanNumber('MMMMDMXCIX')).toEqual('value required');
-    });
-});
-
-
-
+module.exports = {
+  RomanNumber: RomanNumber,
+};
