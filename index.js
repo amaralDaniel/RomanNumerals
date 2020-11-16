@@ -31,10 +31,29 @@ RomanNumber = (num) => {
     } else {
       let currentIndex = 0;
       let maxLength = num.length;
-      let current
-      while (currentIndex < maxLength) {
+      const receivedRomanNumeral = num.split('');
+      let currentCharacter = '';
+      var output = 0;
+      var indexToAdd; 
 
+
+      while (currentIndex < maxLength) {
+        currentCharacter = receivedRomanNumeral[currentIndex];
+        
+        if (currentIndex + 1 < maxLength) {
+          if (romanNumbers.indexOf(currentCharacter) <= romanNumbers.indexOf(receivedRomanNumeral[currentIndex+1])) {
+            output += arabicNumbers[romanNumbers.indexOf(currentCharacter)];
+            currentIndex++;
+          } else {
+            output += (arabicNumbers[romanNumbers.indexOf(receivedRomanNumeral[currentIndex+1])] - arabicNumbers[romanNumbers.indexOf(currentCharacter)]);
+            currentIndex+=2;
+          }
+        } else {
+          output += arabicNumbers[romanNumbers.indexOf(currentCharacter)];
+          currentIndex++;
+        }
       }
+      return output;
     }
   } else {
     //arabic to roman
@@ -58,7 +77,7 @@ RomanNumber = (num) => {
   }
 };
 
-//console.log(RomanNumber('1473'));
+console.log(RomanNumber('II'));
 
 module.exports = {
   RomanNumber: RomanNumber,
