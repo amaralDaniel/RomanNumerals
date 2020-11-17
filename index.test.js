@@ -180,5 +180,16 @@ describe("No more than 3 straight equal characters", () => {
   });
 });
 
+describe("'MCMLXXX' as input", () => {
+  test("the output should be 1980", () => {
+    expect(RomanNumber("MCMLXXX").toString()).toEqual('MCMLXXX');
+  });
+});
+
+describe("12 as input", () => {
+  test("the output should be XII", () => {
+    expect(RomanNumber(12).toInt()).toEqual(12);
+  });
+});
 
 
