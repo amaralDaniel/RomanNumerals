@@ -16,7 +16,7 @@ const romanNumbers = [
 const arabicNumbers = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1];
 const hasNumber = /\d/;
 
-RomanNumber = (input) => {
+function RomanNumber(input) {
   if (input === null || input === "" || input === "error") {
     throw new Error("value required");
   }
@@ -29,11 +29,10 @@ RomanNumber = (input) => {
     if (hasNumber.test(input)) {
       throw new Error("value required");
     } else {
-      let currentIndex = 0;
+      let currentIndex = 0, output = 0;
       let maxLength = input.length;
       const receivedRomanNumeral = input.split("");
       let currentCharacter = "";
-      var output = 0;
       var lastCharacter = receivedRomanNumeral[0];
       var characterCount = 1;
 
@@ -77,19 +76,18 @@ RomanNumber = (input) => {
           currentIndex++;
         }
       }
+
       var outputObject = {
         toInt: () => output,
-        toString: () => input
-      }
+        toString: () => input,
+      };
       return outputObject;
     }
   } else {
     //arabic to roman
     let numberToConvert = input;
-    let currentIndex = 0;
+    let currentIndex = 0, quotient = 0, rest = 0;
     var output = [];
-    var quotient = 0;
-    var rest = 0;
 
     while (numberToConvert > 0) {
       let currentArabicNumber = arabicNumbers[currentIndex];
@@ -106,22 +104,25 @@ RomanNumber = (input) => {
     }
     var outputObject = {
       toInt: () => input,
-      toString: () => output.join("")
-    }
+      toString: () => output.join(""),
+    };
     return outputObject;
   }
-};
+}
 
 /*
-var newRomanNumber1 = RomanNumber('XX');
-var newRomanNumber2 = RomanNumber(40);
+var newRomanNumber1 = new RomanNumber('XX');
+var newRomanNumber2 = new RomanNumber(40);
 
 console.log(newRomanNumber1.toInt());
 console.log(newRomanNumber1.toString());
 
 console.log(newRomanNumber2.toInt());
 console.log(newRomanNumber2.toString());
+
 */
+
+//for testing purposes
 module.exports = {
   RomanNumber: RomanNumber,
 };
