@@ -81,8 +81,8 @@ describe("1968 as input", () => {
 });
 
 describe("'1473' as input", () => {
-  test("the output should be value required exception", () => {
-    const output = "value required";
+  test("the output should be invalid value exception", () => {
+    const output = "invalid value";
 
     expect(() => {
       RomanNumber("1473");
@@ -109,8 +109,8 @@ describe("'CDXXIX' as input", () => {
 });
 
 describe("'CD1X' as input", () => {
-  test("the output should be value required", () => {
-    const output = "value required";
+  test("the output should be invalid value", () => {
+    const output = "invalid value";
 
     expect(() => {
       RomanNumber('CD1X');
@@ -141,8 +141,8 @@ describe("'MCMLXXX' as input", () => {
 });
 
 describe("'MMMMCMXCIC' as input", () => {
-  test("the output should be value required", () => {
-    const output = "value required";
+  test("the output should be invalid value", () => {
+    const output = "invalid value";
 
     expect(() => {
       RomanNumber("MMMMCMXCIC");
@@ -151,8 +151,8 @@ describe("'MMMMCMXCIC' as input", () => {
 });
 
 describe("'MMMMDMXCIX' as input", () => {
-  test("the output should be value required", () => {
-    const output = "value required";
+  test("the output should be invalid value", () => {
+    const output = "invalid value";
 
     expect(() => {
       RomanNumber("MMMMDMXCIX");
@@ -161,8 +161,8 @@ describe("'MMMMDMXCIX' as input", () => {
 });
 
 describe("No more than 3 straight equal characters", () => {
-  test("the output should be value required", () => {
-    const output = "value required";
+  test("the output should be invalid value", () => {
+    const output = "invalid value";
 
     expect(() => {
       RomanNumber("IIII");
@@ -171,8 +171,8 @@ describe("No more than 3 straight equal characters", () => {
 });
 
 describe("No more than 3 straight equal characters", () => {
-  test("the output should be value required", () => {
-    const output = "value required";
+  test("the output should be invalid value", () => {
+    const output = "invalid value";
 
     expect(() => {
       RomanNumber("MCMVIIII");
@@ -191,5 +191,6 @@ describe("12 as input", () => {
     expect(RomanNumber(12).toInt()).toEqual(12);
   });
 });
+
 
 
