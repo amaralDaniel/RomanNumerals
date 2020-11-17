@@ -37,9 +37,6 @@ function RomanNumber(input) {
       var characterCount = 1;
 
       while (currentIndex < maxLength) {
-        if (output > 3999) {
-          throw new Error("value required");
-        }
         currentCharacter = receivedRomanNumeral[currentIndex];
 
         if (currentIndex > 0) {
