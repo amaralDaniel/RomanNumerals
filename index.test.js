@@ -46,37 +46,37 @@ describe("10000 as input", () => {
 
 describe("1 to 10 as input", () => {
   test("the output should be I-V as roman numeral", () => {
-    expect(RomanNumber(1)).toEqual("I");
-    expect(RomanNumber(2)).toEqual("II");
-    expect(RomanNumber(3)).toEqual("III");
-    expect(RomanNumber(4)).toEqual("IV");
-    expect(RomanNumber(5)).toEqual("V");
-    expect(RomanNumber(6)).toEqual("VI");
-    expect(RomanNumber(7)).toEqual("VII");
-    expect(RomanNumber(8)).toEqual("VIII");
-    expect(RomanNumber(9)).toEqual("IX");
-    expect(RomanNumber(10)).toEqual("X");
+    expect(RomanNumber(1).toString()).toEqual("I");
+    expect(RomanNumber(2).toString()).toEqual("II");
+    expect(RomanNumber(3).toString()).toEqual("III");
+    expect(RomanNumber(4).toString()).toEqual("IV");
+    expect(RomanNumber(5).toString()).toEqual("V");
+    expect(RomanNumber(6).toString()).toEqual("VI");
+    expect(RomanNumber(7).toString()).toEqual("VII");
+    expect(RomanNumber(8).toString()).toEqual("VIII");
+    expect(RomanNumber(9).toString()).toEqual("IX");
+    expect(RomanNumber(10).toString()).toEqual("X");
   });
 });
 
 describe("I to X as input", () => {
   test("the output should be 1-5 as arabic number", () => {
-    expect(RomanNumber("I")).toEqual(1);
-    expect(RomanNumber("II")).toEqual(2);
-    expect(RomanNumber("III")).toEqual(3);
-    expect(RomanNumber("IV")).toEqual(4);
-    expect(RomanNumber("V")).toEqual(5);
-    expect(RomanNumber("VI")).toEqual(6);
-    expect(RomanNumber("VII")).toEqual(7);
-    expect(RomanNumber("VIII")).toEqual(8);
-    expect(RomanNumber("IX")).toEqual(9);
-    expect(RomanNumber("X")).toEqual(10);
+    expect(RomanNumber("I").toInt()).toEqual(1);
+    expect(RomanNumber("II").toInt()).toEqual(2);
+    expect(RomanNumber("III").toInt()).toEqual(3);
+    expect(RomanNumber("IV").toInt()).toEqual(4);
+    expect(RomanNumber("V").toInt()).toEqual(5);
+    expect(RomanNumber("VI").toInt()).toEqual(6);
+    expect(RomanNumber("VII").toInt()).toEqual(7);
+    expect(RomanNumber("VIII").toInt()).toEqual(8);
+    expect(RomanNumber("IX").toInt()).toEqual(9);
+    expect(RomanNumber("X").toInt()).toEqual(10);
   });
 });
 
 describe("1968 as input", () => {
   test("the output should be MCMLXVIII", () => {
-    expect(RomanNumber(1968)).toEqual("MCMLXVIII");
+    expect(RomanNumber(1968).toString()).toEqual("MCMLXVIII");
   });
 });
 
@@ -92,19 +92,19 @@ describe("'1473' as input", () => {
 
 describe("2999 as input", () => {
   test("the output should be MMCMXCIX", () => {
-    expect(RomanNumber(2999)).toEqual("MMCMXCIX");
+    expect(RomanNumber(2999).toString()).toEqual("MMCMXCIX");
   });
 });
 
 describe("3000 as input", () => {
   test("the output should be MMM", () => {
-    expect(RomanNumber(3000)).toEqual("MMM");
+    expect(RomanNumber(3000).toString()).toEqual("MMM");
   });
 });
 
 describe("'CDXXIX' as input", () => {
   test("the output should be 429", () => {
-    expect(RomanNumber("CDXXIX")).toEqual(429);
+    expect(RomanNumber("CDXXIX").toInt()).toEqual(429);
   });
 });
 
@@ -130,13 +130,13 @@ describe("'error' as input", () => {
 
 describe("'MCDLXXXII' as input", () => {
   test("the output should be 1482", () => {
-    expect(RomanNumber("MCDLXXXII")).toEqual(1482);
+    expect(RomanNumber("MCDLXXXII").toInt()).toEqual(1482);
   });
 });
 
 describe("'MCMLXXX' as input", () => {
   test("the output should be 1980", () => {
-    expect(RomanNumber("MCMLXXX")).toEqual(1980);
+    expect(RomanNumber("MCMLXXX").toInt()).toEqual(1980);
   });
 });
 
