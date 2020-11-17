@@ -27,7 +27,7 @@ function RomanNumber(input) {
   //roman to arabic
   if (typeof input == "string") {
     if (hasNumber.test(input)) {
-      throw new Error("value required");
+      throw new Error("invalid value");
     } else {
       let currentIndex = 0, output = 0;
       let maxLength = input.length;
@@ -44,7 +44,7 @@ function RomanNumber(input) {
             characterCount++;
 
             if (characterCount > 3) {
-              throw new Error("value required");
+              throw new Error("invalid value");
             }
           } else {
             lastCharacter = currentCharacter;
